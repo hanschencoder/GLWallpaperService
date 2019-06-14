@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wallpaper xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+           xmlns:android="http://schemas.android.com/apk/res/android"
+           android:description="@string/app_name"
+           android:thumbnail="@color/colorPrimary"
+           androidprv:supportsAmbientMode="true"/>

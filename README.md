@@ -1,0 +1,60 @@
+# GLWallpaperService
+支持使用 openGL 开发 Android 动态壁纸
+
+ - 和 GLSurfaceView 接口使用保持一致
+ - 支持 OpenGL 2.0
+
+# 添加 GLWallpaperService 依赖
+
+通过Gradle构建：
+```groovy
+compile 'site.hanschen:glwallpaperservice:0.1.0'
+```
+
+通过Maven构建：
+```xml
+<dependency>
+  <groupId>site.hanschen</groupId>
+  <artifactId>glwallpaperservice</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
+```
+
+# 如何使用
+
+1. 继承 `GLWallpaperService` 并设置 `GLEngine`
+```
+public class MyGLWallpaperService extends GLWallpaperService {
+
+    @Override
+    public WallpaperService.Engine onCreateEngine() {
+        GLEngine engine = new GLEngine();
+        engine.setEGLContextClientVersion(2);
+        engine.setRenderer(new MyRenderer());
+        engine.setRenderMode(RENDERMODE_CONTINUOUSLY);
+        return engine;
+    }
+}
+```
+
+2. 实现 `Renderer`， `Renderer` 的使用和 `GLSurfaceView#Renderer` 完全一致，这里不再赘述
+```
+public class MyRenderer implements GLWallpaperService.Renderer {
+
+    @Override
+    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        GLES20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+    }
+
+    @Override
+    public void onSurfaceChanged(GL10 gl, int width, int height) {
+        GLES20.glViewport(0, 0, width, height);
+    }
+
+    @Override
+    public void onDrawFrame(GL10 gl) {
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+    }
+}
+```
