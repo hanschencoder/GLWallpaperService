@@ -7,16 +7,18 @@
 # 添加 GLWallpaperService 依赖
 
 通过Gradle构建：
+
 ```groovy
-compile 'site.hanschen:glwallpaperservice:0.1.0'
+compile 'site.hanschen:glwallpaperservice:0.1.1'
 ```
 
 通过Maven构建：
+
 ```xml
 <dependency>
   <groupId>site.hanschen</groupId>
   <artifactId>glwallpaperservice</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -24,23 +26,29 @@ compile 'site.hanschen:glwallpaperservice:0.1.0'
 # 如何使用
 
 1. 继承 `GLWallpaperService` 并设置 `GLEngine`
-```
+
+```java
 public class MyGLWallpaperService extends GLWallpaperService {
 
     @Override
-    public WallpaperService.Engine onCreateEngine() {
-        GLEngine engine = new GLEngine();
-        engine.setEGLContextClientVersion(2);
-        engine.setRenderer(new MyRenderer());
-        engine.setRenderMode(RENDERMODE_CONTINUOUSLY);
-        return engine;
+    protected GLEngine createGLEngine() {
+        return new GLEngine() {
+            @Override
+            protected void setupGLSurfaceView(boolean isPreview) {
+                setEGLContextClientVersion(2);
+                setEGLConfigChooser(new EglConfigChooser(8, 8, 8, 0, 0, 0, 0));
+                setRenderer(new MyRenderer());
+                setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+            }
+        };
     }
 }
 ```
 
-2. 实现 `Renderer`， `Renderer` 的使用和 `GLSurfaceView#Renderer` 完全一致，这里不再赘述
-```
-public class MyRenderer implements GLWallpaperService.Renderer {
+2. 实现 `GLSurfaceView#Renderer`， `Renderer` 的使用和 `GLSurfaceView#Renderer` 完全一致，这里不再赘述
+
+```java
+public class MyRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {

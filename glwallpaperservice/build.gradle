@@ -23,7 +23,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.android.support:support-v4:28.0.0'
+    compile 'com.android.support:support-v4:28.0.0'
 }
 
 tasks.withType(JavaCompile) {
@@ -35,7 +35,7 @@ def gitUrl = 'https://github.com/shensky711/GLWallpaperService.git'
 def libraryName = 'GLWallpaperService'
 def description = 'OpenGL for Android WallpaperService'
 group = 'site.hanschen'
-version = '0.1.0'
+version = '0.1.1'
 
 install {
     repositories.mavenInstaller {
