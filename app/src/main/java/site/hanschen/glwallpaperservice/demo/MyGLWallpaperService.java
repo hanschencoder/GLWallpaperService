@@ -1,6 +1,8 @@
 package site.hanschen.glwallpaperservice.demo;
 
-import android.service.wallpaper.WallpaperService;
+import android.opengl.GLSurfaceView;
+
+import site.hanschen.glwallpaperservice.EglConfigChooser;
 import site.hanschen.glwallpaperservice.GLWallpaperService;
 
 /**
@@ -9,11 +11,15 @@ import site.hanschen.glwallpaperservice.GLWallpaperService;
 public class MyGLWallpaperService extends GLWallpaperService {
 
     @Override
-    public WallpaperService.Engine onCreateEngine() {
-        GLEngine engine = new GLEngine();
-        engine.setEGLContextClientVersion(2);
-        engine.setRenderer(new MyRenderer());
-        engine.setRenderMode(RENDERMODE_CONTINUOUSLY);
-        return engine;
+    protected GLEngine createGLEngine() {
+        return new GLEngine() {
+            @Override
+            protected void setupGLSurfaceView(boolean isPreview) {
+                setEGLContextClientVersion(2);
+                setEGLConfigChooser(new EglConfigChooser(8, 8, 8, 0, 0, 0, 0));
+                setRenderer(new MyRenderer());
+                setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+            }
+        };
     }
 }

@@ -1,7 +1,7 @@
 package site.hanschen.glwallpaperservice.demo;
 
 import android.opengl.GLES20;
-import site.hanschen.glwallpaperservice.GLWallpaperService;
+import android.opengl.GLSurfaceView;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -10,7 +10,7 @@ import javax.microedition.khronos.opengles.GL10;
 /**
  * @author chenhang
  */
-public class MyRenderer implements GLWallpaperService.Renderer {
+public class MyRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
