@@ -9,7 +9,7 @@
 通过Gradle构建：
 
 ```groovy
-compile 'io.github.hanschencoder-glwallpaperservice-0.1.1'
+compile 'io.github.hanschencoder:glwallpaperservice:0.1.1'
 ```
 
 通过Maven构建：
