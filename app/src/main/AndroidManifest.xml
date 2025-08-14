@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,11 +22,11 @@
         </activity>
 
         <service
+            android:exported="true"
             android:label="GLWallpaperService"
             android:name=".MyGLWallpaperService"
             android:permission="android.permission.BIND_WALLPAPER"
-            android:enabled="true"
-            android:directBootAware="true">
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService"/>
             </intent-filter>

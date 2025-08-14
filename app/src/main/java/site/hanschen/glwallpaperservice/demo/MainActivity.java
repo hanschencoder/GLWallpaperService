@@ -49,20 +49,15 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.main_play_live_wallpaper:
-                    chooseLiveWallpaper();
-                    break;
-                case R.id.main_stop_live_wallpaper_system:
-                    clearLiveWallpaperSystem();
-                case R.id.main_stop_live_wallpaper_lock:
-                    clearLiveWallpaperLock();
-                    break;
-                case R.id.main_send_notification:
-                    sendNotification();
-                    break;
-                default:
-                    break;
+            int id = v.getId();
+            if (id == R.id.main_play_live_wallpaper) {
+                chooseLiveWallpaper();
+            } else if (id == R.id.main_stop_live_wallpaper_system) {
+                clearLiveWallpaperSystem();
+            } else if (id == R.id.main_stop_live_wallpaper_lock) {
+                clearLiveWallpaperLock();
+            } else if (id == R.id.main_send_notification) {
+                sendNotification();
             }
         }
     };

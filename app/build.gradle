@@ -1,11 +1,14 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 28
+    namespace 'site.hanschen.glwallpaperservice.demo'
+    compileSdkVersion 35
     defaultConfig {
         applicationId "site.hanschen.glwallpaperservice.demo"
         minSdkVersion 24
-        targetSdkVersion 28
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

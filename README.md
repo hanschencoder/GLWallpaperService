@@ -9,14 +9,14 @@
 通过Gradle构建：
 
 ```groovy
-compile 'site.hanschen:glwallpaperservice:0.1.1'
+compile 'io.github.hanschencoder-glwallpaperservice-0.1.1'
 ```
 
 通过Maven构建：
 
 ```xml
 <dependency>
-  <groupId>site.hanschen</groupId>
+  <groupId>io.github.hanschencoder</groupId>
   <artifactId>glwallpaperservice</artifactId>
   <version>0.1.1</version>
   <type>pom</type>
